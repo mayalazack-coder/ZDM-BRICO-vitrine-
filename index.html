@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZDM Brico | Maintenance & Installation</title>
+
+<style>
+
+:root{
+    --bordeaux:#7A1530;
+    --bleu-nuit:#071B3A;
+    --blanc:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:var(--bleu-nuit);
+    color:var(--blanc);
+    line-height:1.6;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:var(--bleu-nuit);
+    border-bottom:3px solid var(--bordeaux);
+    padding:10px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+}
+
+nav{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 12px;
+    border-radius:6px;
+}
+
+nav a:hover{
+    background:var(--bordeaux);
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:
+        linear-gradient(rgba(7,27,58,.88),rgba(122,21,48,.88)),
+        url("410798.jpg") center/cover;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:clamp(40px,7vw,75px);
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:var(--bordeaux);
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 22px;
+    margin:6px;
+    background:var(--bordeaux);
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    border:2px solid white;
+}
+
+.btn:hover{
+    background:var(--bleu-nuit);
+}
+
+section{
+    padding:70px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+    color:white;
+}
+
+.section-title p{
+    margin-top:8px;
+}
+
+.about{
+    background:var(--bordeaux);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:15px;
+    border:4px solid var(--bleu-nuit);
+}
+
+.services{
+    background:var(--bleu-nuit);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--bordeaux);
+    padding:25px;
+    border-radius:12px;
+    border:2px solid white;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.tarifs{
+    background:var(--bordeaux);
+}
+
+.tarif-box{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.tarif-box img{
+    width:100%;
+    max-width:850px;
+    border-radius:15px;
+    border:4px solid var(--bleu-nuit);
+}
+
+.price{
+    font-size:50px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.galerie{
+    background:var(--bleu-nuit);
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:12px;
+    border:3px solid var(--bordeaux);
+}
+
+.formations{
+    background:var(--bordeaux);
+}
+
+.jobs{
+    background:var(--bleu-nuit);
+}
+
+.job{
+    max-width:850px;
+    margin:15px auto;
+    padding:25px;
+    background:var(--bordeaux);
+    border:2px solid white;
+    border-radius:10px;
+}
+
+.job h3{
+    margin-bottom:8px;
+}
+
+.contact{
+    background:var(--bordeaux);
+    text-align:center;
+}
+
+.contact-box{
+    max-width:800px;
+    margin:auto;
+    background:var(--bleu-nuit);
+    padding:30px;
+    border-radius:15px;
+}
+
+.contact-box p{
+    margin:10px 0;
+    font-size:18px;
+}
+
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:2000;
+    background:var(--bordeaux);
+    color:white;
+    padding:15px 20px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    border:3px solid white;
+}
+
+footer{
+    background:var(--bleu-nuit);
+    text-align:center;
+    padding:30px 15px;
+    border-top:3px solid var(--bordeaux);
+}
+
+@media(max-width:700px){
+
+    header{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .logo{
+        width:65px;
+        height:65px;
+    }
+
+    nav{
+        gap:5px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:6px 8px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:50px 5%;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .whatsapp{
+        right:12px;
+        bottom:12px;
+        padding:12px 15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <img class="logo" src="410798.jpg" alt="Logo ZDM Brico">
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#formations">Formations</a>
+        <a href="#emploi">Emploi</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- ACCUEIL -->
+
+<section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <h1>ZDM <span>BRICO</span></h1>
+
+        <p>
+            Services de maintenance, installation et travaux du bâtiment.
+        </p>
+
+        <p>
+            <strong>Votre projet, notre priorité !</strong>
+        </p>
+
+        <a class="btn"
+           href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20voudrais%20faire%20une%20demande%20de%20devis."
+           target="_blank">
+           Demander un devis
+        </a>
+
+        <a class="btn" href="#emploi">
+            Voir les offres d'emploi
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PRESENTATION -->
+
+<section class="about">
+
+    <div class="section-title">
+        <h2>À propos de ZDM Brico</h2>
+        <p>Un seul partenaire pour vos travaux.</p>
+    </div>
+
+    <div class="about-grid">
+
+        <div>
+            <h2>Notre engagement</h2>
+
+            <p>
+                ZDM Brico accompagne les particuliers, propriétaires,
+                immeubles, entreprises et syndics dans leurs travaux
+                de maintenance, installation, rénovation et entretien.
+            </p>
+
+            <br>
+
+            <p>
+                Notre objectif est de proposer un service fiable,
+                durable et adapté aux besoins de chaque client.
+            </p>
+
+            <br>
+
+            <a class="btn"
+               href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20souhaite%20obtenir%20plus%20d'informations."
+               target="_blank">
+               Nous contacter sur WhatsApp
+            </a>
+        </div>
+
+        <div>
+            <img src="332007.jpg" alt="Technicien ZDM Brico">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+        <h2>Nos services</h2>
+        <p>Maintenance et travaux du bâtiment</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Plomberie</h3>
+            <p>
+                Installation, réparation, entretien,
+                recherche de fuite et travaux sanitaires.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Électricité</h3>
+            <p>
+                Installation électrique, dépannage,
+                maintenance et mise en conformité.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Hydraulique</h3>
+            <p>
+                Pompes, réservoirs, réseaux d'eau,
+                pression, alimentation et évacuation.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>BTP & Maçonnerie</h3>
+            <p>
+                Construction, rénovation, réparation
+                et aménagement des bâtiments.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Piscine</h3>
+            <p>
+                Installation, entretien, pompage
+                et maintenance des équipements.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Maintenance bâtiment</h3>
+            <p>
+                Suivi technique et entretien régulier
+                des bâtiments.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Syndic</h3>
+            <p>
+                Suivi technique des immeubles,
+                interventions et maintenance.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Assainissement</h3>
+            <p>
+                Entretien, vidange et solutions
+                d'assainissement.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TARIFS -->
+
+<section class="tarifs" id="tarifs">
+
+    <div class="section-title">
+        <h2>Nos tarifs</h2>
+        <p>Des tarifs adaptés à vos besoins et à votre budget.</p>
+    </div>
+
+    <div class="tarif-box">
+
+        <img src="410796.jpg" alt="Tarifs ZDM Brico">
+
+        <div class="price">
+            À partir de 50 $ / mois
+        </div>
+
+        <p>
+            Abonnement mensuel selon le contrat.
+        </p>
+
+        <br>
+
+        <p>
+            Les propriétaires peuvent bénéficier notamment
+            de la vidange gratuite de la fosse septique
+            ainsi que d'autres avantages selon le contrat.
+        </p>
+
+        <br>
+
+        <a class="btn"
+           href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20voudrais%20conna%C3%AEtre%20vos%20tarifs%20et%20les%20conditions%20d'abonnement."
+           target="_blank">
+           Demander les tarifs
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- GALERIE -->
+
+<section class="galerie">
+
+    <div class="section-title">
+        <h2>Nos réalisations</h2>
+        <p>Quelques exemples de nos travaux.</p>
+    </div>
+
+    <div class="gallery">
+
+        <img src="410800.jpg" alt="Travaux ZDM Brico">
+
+        <img src="320841.jpg" alt="Réalisation salle de bain">
+
+        <img src="332007.jpg" alt="Travail technique">
+
+    </div>
+
+</section>
+
+
+<!-- FORMATIONS -->
+
+<section class="formations" id="formations">
+
+    <div class="section-title">
+        <h2>Nos formations</h2>
+        <p>Développez vos compétences techniques.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Formation Plomberie</h3>
+            <p>
+                Bases de plomberie, installations,
+                réparations et maintenance.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Formation Électricité</h3>
+            <p>
+                Installation électrique, sécurité,
+                dépannage et maintenance.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Formation Hydraulique</h3>
+            <p>
+                Pompes, pression, débit, réservoirs
+                et réseaux hydrauliques.
+            </p>
+        </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+
+        <a class="btn"
+           href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20formations."
+           target="_blank">
+           Demander une formation
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- EMPLOI -->
+
+<section class="jobs" id="emploi">
+
+    <div class="section-title">
+        <h2>Offres d'emploi</h2>
+        <p>Vous souhaitez rejoindre ZDM Brico ?</p>
+    </div>
+
+    <div class="job">
+
+        <h3>Technicien Plombier</h3>
+
+        <p>
+            Nous recherchons des personnes sérieuses,
+            motivées et capables de travailler sur chantier.
+        </p>
+
+    </div>
+
+    <div class="job">
+
+        <h3>Technicien Électricien</h3>
+
+        <p>
+            Profil technique, sérieux, ponctuel et
+            capable d'intervenir sur différents travaux.
+        </p>
+
+    </div>
+
+    <div class="job">
+
+        <h3>Technicien Bâtiment</h3>
+
+        <p>
+            Compétences pratiques dans les travaux
+            de construction et de maintenance.
+        </p>
+
+    </div>
+
+    <div style="text-align:center;margin-top:30px;">
+
+        <a class="btn"
+           href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20souhaite%20postuler%20%C3%A0%20une%20offre%20d'emploi."
+           target="_blank">
+           Postuler sur WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Contactez ZDM Brico</h2>
+        <p>Parlons de votre projet.</p>
+    </div>
+
+    <div class="contact-box">
+
+        <p><strong>Téléphone :</strong> +243 895 894 251</p>
+
+        <p><strong>Email :</strong> ZDMBRICO@Gmail.com</p>
+
+        <p><strong>YouTube :</strong> ZDM brico</p>
+
+        <p><strong>Adresse :</strong> Matete Anunga 52B, Kinshasa - RDC</p>
+
+        <br>
+
+        <a class="btn"
+           href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20viens%20de%20votre%20site%20internet."
+           target="_blank">
+           Écrire à ZDM Brico sur WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- WHATSAPP FIXE -->
+
+<a class="whatsapp"
+   href="https://wa.me/243895894251?text=Bonjour%20ZDM%20Brico%2C%20je%20voudrais%20faire%20une%20demande."
+   target="_blank">
+   WhatsApp
+</a>
+
+
+<footer>
+
+    <p>
+        © 2026 ZDM Brico — Services de maintenance & installation
+    </p>
+
+    <p>
+        Votre projet, notre priorité !
+    </p>
+
+</footer>
+
+</body>
+              </html>
